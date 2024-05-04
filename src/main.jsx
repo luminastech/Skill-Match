@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import {Home, Feature, Contact, Login} from "./pages";
+import {Home, Feature, Contact, Login, Applicant} from "./pages";
 
 import {
   Route,
@@ -18,6 +18,7 @@ const router = createBrowserRouter(
       <Route path="about" element={<Feature />} />
       <Route path="contact" element={<Contact />} />
       <Route path="login" element={<Login />} />
+      <Route path="applicant" element={<Applicant />} />
     </Route>
   )
 );
