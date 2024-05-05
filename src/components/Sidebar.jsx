@@ -5,9 +5,10 @@ const SidebarContext = createContext();
 
 export default function Sidebar({ children }) {
   const [expanded, setExpanded] = useState(true);
+
   return (
     <>
-      <aside className="h-screen">
+      <aside className="">
         <nav className="h-full flex flex-col border-r border-slate-700 shadow-sm">
           <div className="p-4 pb-2 flex justify-between items-center">
             <button
@@ -18,7 +19,7 @@ export default function Sidebar({ children }) {
             </button>
           </div>
 
-          <SidebarContext.Provider value={{ expanded }}>
+          <SidebarContext.Provider value={{ expanded}}>
             <ul className="flex-1 px-3">{children}</ul>
           </SidebarContext.Provider>
 
@@ -45,14 +46,15 @@ export default function Sidebar({ children }) {
   );
 }
 
-export function SidebarItem({ icon, text, active, alert }) {
+export function SidebarItem({ icon, text, active, alert}) {
   const { expanded } = useContext(SidebarContext);
+
   return (
-    <li
+    <button
       className={`relative flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group ${
         active
           ? "bg-gradient-to-tr from-indigo-200 to-indigo-100 text-indigo-800"
-          : "hover:bg-indigo-50 text-gray-600"
+          : "hover:bg-indigo-50 hover:text-gray-600 text-gray-300"
       }`}
     >
       {icon}
@@ -78,6 +80,6 @@ export function SidebarItem({ icon, text, active, alert }) {
           {text}
         </div>
       )}
-    </li>
+    </button>
   );
 }
